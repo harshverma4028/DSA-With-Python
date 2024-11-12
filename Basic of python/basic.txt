@@ -1,1 +1,1 @@
-this is basic of python
+this is basic of dsa with  python
