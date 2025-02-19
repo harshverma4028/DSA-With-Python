@@ -66,12 +66,34 @@ class Linke_list:
                 break
 
             itr = itr.next
+            count +=1
+    
+    def insert_at(self,index,data):
+        if index <0 or index >= self.get_length():
+            raise Exception("Invalid index : ")
 
+        if index ==0:
+            self.insert_at_begning(data)
+            return        
+        
+        count = 0
+        itr = self.head
+        while itr:
+            if count == index -1:
+                node = Node(data, itr.next)
+                itr.next = node
+                break
 
+            itr = itr.next
+            count +=1
 
 if __name__ =='__main__':
     ll = Linke_list() 
     ll.insert_values(["apple","cherry","grapes","coconut"])
+    ll.print()
     print("the length of ll is :", ll.get_length())
-    ll.remove_at(1)
+    # ll.remove_at(1)
+    ll.insert_at(0,"fizz")
+    ll.print()
+    ll.insert_at(2,"banana")
     ll.print()
