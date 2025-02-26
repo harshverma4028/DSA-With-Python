@@ -2,24 +2,6 @@ class Node:
     def __init__(self,data=None,next=None):
         self.data = data
         self.next = next
-class Node:
-    def __init__(self,data=None,next=None,prev=None):
-        self.data = data
-        self.next = next
-        self.prev = prev
-
-class DLL:
-    def __init__(self):
-        self.head = None
-        self.prev = None
-
-    def insert_at_beg(self,data):
-        node = Node(data,self.head,None)
-        self.head = node
-    def print(self):
-        if self.head == None:
-            print("the doubly linked list is empty ")
-            return
 
 class Linke_list:
     def __init__(self):
