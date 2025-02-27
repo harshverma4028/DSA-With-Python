@@ -1,3 +1,5 @@
+         ## Hw problem doubley linked list
+
 class Node:
     def __init__(self,data=None,next=None,prev=None):
         self.data = data
@@ -88,6 +90,7 @@ class DoubleyLinkedList:
         self.head = None
         for data in data_list:
             self.insert_at_end(data)
+
 
 
 if __name__  =='__main__' :
