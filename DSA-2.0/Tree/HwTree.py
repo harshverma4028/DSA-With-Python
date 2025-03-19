@@ -65,3 +65,4 @@ def build_managment_tree():
 if __name__ == '__main__':
     root_node = build_managment_tree()
     root_node.print_tree("bot")
+    root_node.get_level()
