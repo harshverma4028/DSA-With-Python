@@ -37,6 +37,36 @@ class BinarySearchTreeNode:
 
         return elements        
     
+    def pre_order_traversal(self):
+        elements = []
+        
+        # Append the current Node 
+        elements.append(self.data)
+
+        # checking for the left
+        if self.left:
+            elements += self.left.pre_order_traversal()
+
+
+        if self.right:
+            elements += self.right.pre_order_traversal()
+        
+        return elements
+    
+    def post_tree_traversal(self):
+        elements = []
+
+        if self.left:
+            elements += self.left.post_tree_traversal()
+
+        # might be in the right
+        if self.right:
+            elements += self.right.post_tree_traversal()
+
+        elements.append(self.data)    
+ 
+        return elements
+
     def search(self, val):
         if self.data == val:
             return True
@@ -87,4 +117,6 @@ if __name__ == '__main__':
     print("The min number is the ",number_tree.find_min())
     print("The max element is the ",number_tree.find_max())
     print("the sum of the all element is ",number_tree.calculate_sum())
-    print(number_tree.in_order_traversal())
+    print("The in order traversal is ",number_tree.in_order_traversal())
+    print("the pre order traversal is ",number_tree.pre_order_traversal())
+    print(" Just for checkin :",number_tree.post_tree_traversal())
