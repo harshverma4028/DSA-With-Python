@@ -99,6 +99,28 @@ class BinarySearchTreeNode:
         right_sum  = self.right.calculate_sum() if self.right else 0
         left_sum  =  self.left.calculate_sum() if self.left else 0
         return self.data + left_sum + right_sum
+    
+    def delete(self,val):
+        if val < self.data:
+            if self.left:
+                self.left = self.left.delete(val)
+            
+        elif val > self.data:
+            if self.right:
+                self.right = self.right.delete(val)
+        else:
+            if self.left is None and self.right is None:
+                return None
+            elif self.left is None:
+                return self.right     
+            if self.right is None:
+                return self.left
+            
+            min_val = self.right.find_min()
+            self.data = min_val
+            self.right = self.right.delete(min_val)
+
+        return self  
 
 def build_tree(elements):
     root = BinarySearchTreeNode(elements[0])
@@ -106,17 +128,17 @@ def build_tree(elements):
     for i in range(1,len(elements)):
         root.add_child(elements[i])
 
-    return root
-
-
+    return root  
 
 if __name__ == '__main__':
     numbers = [17,4,10,20,9,23,18,34]
     number_tree = build_tree(numbers)
-    print(number_tree.search(20))
-    print("The min number is the ",number_tree.find_min())
-    print("The max element is the ",number_tree.find_max())
-    print("the sum of the all element is ",number_tree.calculate_sum())
-    print("The in order traversal is ",number_tree.in_order_traversal())
-    print("the pre order traversal is ",number_tree.pre_order_traversal())
-    print(" Just for checkin :",number_tree.post_tree_traversal())
+    # print(number_tree.search(20))
+    # print("The min number is the ",number_tree.find_min())
+    # print("The max element is the ",number_tree.find_max())
+    # print("the sum of the all element is ",number_tree.calculate_sum())
+    # print("The in order traversal is ",number_tree.in_order_traversal())
+    # print("the pre order traversal is ",number_tree.pre_order_traversal())
+    # print(" Just for checkin :",number_tree.post_tree_traversal())
+    number_tree.delete(10)
+    print("the tree after deleting is ", number_tree.in_order_traversal())
