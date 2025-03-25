@@ -99,7 +99,8 @@ class BinarySearchTreeNode:
         right_sum  = self.right.calculate_sum() if self.right else 0
         left_sum  =  self.left.calculate_sum() if self.left else 0
         return self.data + left_sum + right_sum
-    
+      
+        
     def delete(self,val):
         if val < self.data:
             if self.left:
@@ -116,9 +117,15 @@ class BinarySearchTreeNode:
             if self.right is None:
                 return self.left
             
-            min_val = self.right.find_min()
-            self.data = min_val
-            self.right = self.right.delete(min_val)
+                         # By using the right min element delete method
+            # min_val = self.right.find_min()
+            # self.data = min_val
+            # self.right = self.right.delete(min_val)
+                         
+                         # Used the left max delete element method 
+            max_value = self.left.find_max()
+            self.data = max_value
+            self.left = self.left.delete(max_value)
 
         return self  
 
@@ -140,5 +147,6 @@ if __name__ == '__main__':
     # print("The in order traversal is ",number_tree.in_order_traversal())
     # print("the pre order traversal is ",number_tree.pre_order_traversal())
     # print(" Just for checkin :",number_tree.post_tree_traversal())
+    print(("th tree befor deleting is ",number_tree.in_order_traversal()))
     number_tree.delete(10)
     print("the tree after deleting is ", number_tree.in_order_traversal())
