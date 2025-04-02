@@ -23,7 +23,34 @@ def binary_searh(number_list, number_to_find):
         else:
             right_index  = mid_index -1
 
-    return -1            
+    return -1 
+
+
+def find_all_occurence(numbers, number_to_find):
+    index = binary_searh(numbers, number_to_find)
+    indices = [index]
+    # find indices on left hand side
+    i = index-1
+    while i >=0:
+        if numbers[i] == number_to_find:
+            indices.append(i)
+        else:
+            break
+        i = i - 1
+
+    # find indices on right hand side
+    i = index + 1
+    while i<len(numbers):
+        if numbers[i] == number_to_find:
+            indices.append(i)
+        else:
+            break
+        i = i + 1
+
+    return sorted(indices)
+
+
+
 def binary_recursive(number_list , number_to_find , left_index ,right_index):
     if right_index < left_index:
         return -1
@@ -46,8 +73,7 @@ def binary_recursive(number_list , number_to_find , left_index ,right_index):
     return binary_recursive(number_list , number_to_find, left_index , right_index)        
 
 if __name__ == '__main__':
-    numbers_list = [12,15,17,19,21,45,67]
-    number_to_find = 45
-
-    index = binary_recursive(numbers_list , number_to_find, 0 , len(numbers_list))
-    print(f"Number found at index {index} using  search")
+    numbers = [1,4,6,9,11,15,15,15,17,21,34,34,56]
+    number_to_find = 15
+    indices = find_all_occurence(numbers, number_to_find)
+    print(f"Indices of occurances of {number_to_find} are {indices}")
